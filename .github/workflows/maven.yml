@@ -1,4 +1,4 @@
-name: Build
+
 # on:
 #   push:
 #     branches:
@@ -35,12 +35,10 @@ name: Build
 #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 #         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=lfreixial_maven-testing_AYIl2bNpVi8lXLUNzIw6
-
+name: Build
     on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request. 
-  push:
-    branches:
+      push:
+      branches:
       - main
   pull_request:
       types: [opened, synchronize, reopened]
@@ -59,5 +57,5 @@ jobs:
     - name: SonarQube Scan
       uses: kitabisa/sonarqube-action@v1.2.0
       with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
