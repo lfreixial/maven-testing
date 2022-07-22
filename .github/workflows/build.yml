@@ -31,7 +31,7 @@ on:
 
 jobs:
   build:
-    name: Build_Go
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
