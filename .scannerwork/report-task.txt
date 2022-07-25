@@ -1,0 +1,6 @@
+projectKey=lfreixial_maven-testing_AYI0xR6is2PdFcLb4J0-
+serverUrl=http://localhost:9000
+serverVersion=9.5.0.56709
+dashboardUrl=http://localhost:9000/dashboard?id=lfreixial_maven-testing_AYI0xR6is2PdFcLb4J0-
+ceTaskId=AYI0zzcas2PdFcLb4J1P
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYI0zzcas2PdFcLb4J1P
