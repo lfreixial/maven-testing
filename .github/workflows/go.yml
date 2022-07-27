@@ -31,6 +31,9 @@ jobs:
             GO111MODULE=off go test -coverprofile=coverage.out ./...
             ls
             cat coverage.out
+      - name: Create java report
+        run: mvn clean install
+        
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

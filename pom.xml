@@ -16,9 +16,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <!-- <sonar.java.libraries>target</sonar.java.libraries>
-    <sonar.java.binaries>target</sonar.java.binaries> -->
-     <sonar.sources>src/main/java,platform/</sonar.sources> 
+    <sonar.java.libraries>target</sonar.java.libraries>
+    <sonar.java.binaries>target</sonar.java.binaries>
+    <!-- <sonar.sources>src/main/java,platform/</sonar.sources>  -->
   </properties>
 
   <dependencies>
