@@ -27,6 +27,8 @@ jobs:
           echo ${GITHUB_WORKSPACE}
           echo ${GOPATH}
           echo ${GOROOT}
+        env:
+          GOPATH: /home/runner/work/maven-testing/go
 
       # - run: echo $GOPATH
       # - run: mvn clean install
