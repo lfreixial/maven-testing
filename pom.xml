@@ -18,6 +18,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <sonar.java.libraries>target</sonar.java.libraries>
     <sonar.java.binaries>target</sonar.java.binaries>
+    <jacoco.version>0.8.8</jacoco.version>
     <!-- <sonar.go.coverage.reportPaths>coverage.out</sonar.go.coverage.reportPaths> -->
     <!-- <sonar.sources>src/main/java,platform/</sonar.sources>  -->
   </properties>
@@ -29,11 +30,7 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-    <groupId>org.jacoco</groupId> 
-    <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.8.6</version>
-</dependency>
+
   </dependencies>
 
 
@@ -79,68 +76,37 @@
                   <artifactId>maven-project-info-reports-plugin</artifactId>
                   <version>3.0.0</version>
                 </plugin>
-
-              <!-- <plugin>
-              <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-              <version>0.8.7</version>
-              <executions>
-                <execution>
-                  <id>prepare-agent</id>
-                  <goals>
-                    <goal>prepare-agent</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>report</id>
-                  <goals>
-                    <goal>report</goal>
-                  </goals>
-                  <configuration>
-                    <formats>
-                      <format>XML</format>
-                    </formats>
-                  </configuration>
-                </execution>
-              </executions>
-    </plugin> -->
+       
 
 
-
-
-
-
-
-                <plugin>
-                  <groupId>org.jacoco</groupId>
-                  <artifactId>jacoco-maven-plugin</artifactId>
-                  <version>0.8.8</version>
-                  <executions>
+    <!-- Plugins for JACOCO Coverage report -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/baeldung/**/ExcludedPOJO.class</exclude>
+                        <exclude>com/baeldung/**/*DTO.*</exclude>
+                        <exclude>**/config/*</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
                     <execution>
-                        <id>prepare-agent</id>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                            <configuration>
-                <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
-                                <propertyName>surefireArgLine</propertyName>
-                            </configuration>
-                      </execution>
-                      <execution>
-                            <id>report</id>
-                            <phase>test</phase>
-                              <goals>
-                                <goal>report</goal>
-                              </goals>
-                              <configuration>
-                <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
-                <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
-                              </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
-
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
       </plugins>
       
