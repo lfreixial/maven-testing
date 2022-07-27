@@ -32,8 +32,8 @@ jobs:
             ls
             cat coverage.out
       - name: Create java report
-        run: mvn clean install
-        
+        run: mvn clean jacoco:prepare-agent install
+
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
