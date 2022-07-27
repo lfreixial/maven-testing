@@ -13,8 +13,8 @@ jobs:
         with:
           fetch-depth: 0
       - run: mvn clean install
-      - run: go test "./..." -coverprofile="coverage.out"
-      # - run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
+      # - run: go test "./..." -coverprofile="coverage.out"
+      - run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
       - uses: sonarsource/sonarqube-scan-action@master 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
