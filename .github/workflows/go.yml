@@ -33,7 +33,7 @@ jobs:
       # - name: Sonarcloud
         # run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
         # - run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
-a
+
 # name: Build
 # on:
 #   workflow_dispatch:
