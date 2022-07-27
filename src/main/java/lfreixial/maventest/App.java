@@ -12,4 +12,8 @@ public class App
         System.out.println( "testing!" );
         System.out.println( "testing!" );
     }
+
+    public static int multiply(int a, int b){
+        return a*b;
+    }
 }
