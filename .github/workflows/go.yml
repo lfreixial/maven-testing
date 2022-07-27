@@ -29,15 +29,13 @@ jobs:
           echo ${GOROOT}
         env:
           GOPATH: /home/runner/work/maven-testing/go
-
-      # - run: echo $GOPATH
-      # - run: mvn clean install
-      # - run: go test "./..." -coverprofile="coverage.out"
-      # - run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
-      # - uses: sonarsource/sonarqube-scan-action@master 
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Sonarcloud
+        run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
+        # - run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
+      - uses: sonarsource/sonarqube-scan-action@master 
+        env:
+          SONAR_clTOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
 # name: Build
 # on:
