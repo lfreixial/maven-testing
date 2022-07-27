@@ -1,0 +1,4 @@
+mode: set
+/Users/luisfreixial/git-repos/maven-testing/platform/dispatch/calculator.go:3.24,6.2 2 1
+/Users/luisfreixial/git-repos/maven-testing/platform/mymodule/main.go:5.13,7.2 1 0
+/Users/luisfreixial/git-repos/maven-testing/platform/mymodule/main.go:9.24,12.2 2 1

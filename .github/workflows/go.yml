@@ -25,13 +25,22 @@ jobs:
           echo ${GOROOT}
         env:
           GOPATH: /home/runner/work/maven-testing/maven-testing/go
-
-      - name: Create golangci-lint report
+        
+      - name: Create go report
         run: |
-          go version
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.42.1
-          /root/go/bin/golangci-lint --version
-          /root/go/bin/golangci-lint run --out-format checkstyle -D deadcode,unused --build-tags=integration --timeout 10m --issues-exit-code 0 > report.xml
+            GO111MODULE=off go test -coverprofile=coverage.out ./...
+            ls
+            cat coverage.out
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # - name: Create golangci-lint report
+      #   run: |
+      #     go version
+      #     curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.42.1
+      #     /root/go/bin/golangci-lint --version
+      #     sudo /root/go/bin/golangci-lint run --out-format checkstyle -D deadcode,unused --build-tags=integration --timeout 10m --issues-exit-code 0 > report.xml
       # - name: Sonarcloud
         # run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
         # - run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
