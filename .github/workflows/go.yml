@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - run: echo $GOPATH
       - run: mvn clean install
       # - run: go test "./..." -coverprofile="coverage.out"
       - run: cd platform/mymodule && go test -coverprofile=coverage.out && ls && pwd
