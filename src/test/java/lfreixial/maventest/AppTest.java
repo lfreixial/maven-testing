@@ -29,7 +29,7 @@ public class AppTest
     @Test
     public void shouldReturnTrueAdd(){
         App a = new App();
-        int answer = a.multiply(5, 5);
+        int answer = a.add(5, 5);
         assertEquals(10, answer);
     }
 
