@@ -25,4 +25,12 @@ public class AppTest
         int answer = a.multiply(5, 5);
         assertEquals(25, answer);
     }
+
+    @Test
+    public void shouldReturnTrueAdd(){
+        App a = new App();
+        int answer = a.multiply(5, 5);
+        assertEquals(10, answer);
+    }
+
 }
