@@ -21,7 +21,7 @@
     <jacoco.version>0.8.8</jacoco.version>
     <sonar.sources>src/main,platform/</sonar.sources>
     <sonar.go.coverage.reportPaths>coverage.out</sonar.go.coverage.reportPaths>
-    <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.html</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.exclusions>target/**, **/*_test.go</sonar.exclusions>
     <!-- <sonar.go.coverage.reportPaths>coverage.out</sonar.go.coverage.reportPaths> -->
     <!-- <sonar.sources>src/main/java,platform/</sonar.sources>  -->
