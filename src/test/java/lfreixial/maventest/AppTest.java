@@ -33,4 +33,12 @@ public class AppTest
         assertEquals(10, answer);
     }
 
+    @Test
+    public void shouldReturnTrueSub(){
+        App a = new App();
+        int answer = a.sub(5, 5);
+        assertEquals(0, answer);
+    }
+
+
 }
