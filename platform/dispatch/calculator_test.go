@@ -21,6 +21,7 @@ func TestMul(t *testing.T) {
 	if got != want {
 		t.Errorf("Test fail! want: %d, got: %d", want, got)
 	}
+}
 
 func TestSub(t *testing.T) {
 	want := 0

@@ -87,7 +87,7 @@ jobs:
           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.47.2
           golangci-lint version
           ls
-          GO111MODULE=off golangci-lint run --out-format checkstyle -D deadcode,unused --build-tags=integration --timeout 10m --issues-exit-code 0 ./... > report.xml 
+          GO111MODULE=off golangci-lint run --out-format checkstyle ./... > report.xml 
      
      
      
