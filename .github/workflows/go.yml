@@ -74,17 +74,37 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Set-up Golang 1.18
-        uses: actions/setup-go@v1
+
+      - name: Set up Golang 1.17
+        uses: actions/setup-go@v3
         with:
-          go-version: 1.18
-        env:
-          GOPATH: /home/runner/work/maven-testing/maven-testing/go
-      - name: Create go report
+          go-version: 1.17
+        
+      - name: debug
         run: |
-            GO111MODULE=off go test -coverprofile=coverage.out ./...
-            ls
-            cat coverage.out
+          echo $GOPATH
+          go version
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.47.2
+          golangci-lint version
+          ls
+          GO111MODULE=off golangci-lint run --out-format checkstyle -D deadcode,unused --build-tags=integration --timeout 10m --issues-exit-code 0 ./... > report.xml 
+     
+     
+     
+      # - name: Set-up Golang 1.18
+      #   uses: actions/setup-go@v1
+      #   with:
+      #     go-version: 1.18
+      #   env:
+      #     GOPATH: /home/runner/work/maven-testing/maven-testing/go
+      # - name: Create go report
+      #   run: |
+      #       GO111MODULE=off go test -coverprofile=coverage.out ./...
+      #       ls
+      #       cat coverage.out
+     
+     
+     
       - name: Create java report
         run: mvn clean jacoco:prepare-agent install jacoco:report
 

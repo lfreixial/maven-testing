@@ -20,9 +20,10 @@
     <sonar.java.binaries>target</sonar.java.binaries>
     <jacoco.version>0.8.8</jacoco.version>
     <sonar.sources>src/main,platform/</sonar.sources>
-    <sonar.go.coverage.reportPaths>coverage.out</sonar.go.coverage.reportPaths>
+    <!-- <sonar.go.coverage.reportPaths>coverage.out</sonar.go.coverage.reportPaths> -->
     <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.exclusions>target/**, **/*_test.go</sonar.exclusions>
+    <sonar.go.golangci-lint.reportPaths>report.xml</sonar.go.golangci-lint.reportPaths>
     <!-- <sonar.go.coverage.reportPaths>coverage.out</sonar.go.coverage.reportPaths> -->
     <!-- <sonar.sources>src/main/java,platform/</sonar.sources>  -->
   </properties>
@@ -88,13 +89,6 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>com/baeldung/**/ExcludedPOJO.class</exclude>
-                        <exclude>com/baeldung/**/*DTO.*</exclude>
-                        <exclude>**/config/*</exclude>
-                    </excludes>
-                </configuration>
                 <executions>
                     <execution>
                         <id>jacoco-initialize</id>
